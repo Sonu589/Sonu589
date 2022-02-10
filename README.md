@@ -24,3 +24,4 @@ You can click the Preview link to take a look at your changes.
     <img src="https://img.shields.io/badge/Twitter-blue?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge"/>
   </a>
 </div>
+<img src="https://komarev.com/ghpvc/?username=Sonu589&style=flat-square&color=blue" alt=""/>
