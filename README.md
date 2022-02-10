@@ -66,4 +66,11 @@ https://github-readme-streak-stats.herokuapp.com/?user=Sonu589
 
 ---
 
-### :writing_hand: Blog Posts :
+### Experience:
+<div>
+     <ul>
+       <li style="color:Blue">Internship Future Ready Talent</li>
+       <li style="color:Blue">Student Ambassador at codeflow</li>
+       <li style="color:Blue">Internship at Cognizant</li>
+  </ul>
+  </div>
