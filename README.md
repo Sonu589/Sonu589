@@ -40,3 +40,10 @@ You can click the Preview link to take a look at your changes.
 
 ### :woman_technologist: About Me :
 I am a Frontend Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from India.
+- :telescope: I’m Currently Student Of Chitkara University B-tech (CSE).
+
+- :seedling: Exploring Skills and technologies.
+
+- :zap: In my free time, I solve problems on GeeksforGeeks ,Codechef and doing other activities to improve skills.
+
+- :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-kakbar-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/sonu-gandhi-205b421b2)
