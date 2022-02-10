@@ -32,7 +32,7 @@ I am a Frontend Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTG
 - :telescope: I’m Currently Student Of Chitkara University B-tech (CSE).
 
 - :seedling: Exploring Skills and technologies.
-
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Sonu589)](https://github.com/Sonu589/github-readme-stats)
 - :zap: In my free time, I solve problems on GeeksforGeeks ,Codechef and doing other activities to improve skills.
 
 - :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-SONU_GANDHI-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/sonu-gandhi-205b421b2)
