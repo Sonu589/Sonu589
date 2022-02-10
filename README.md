@@ -56,3 +56,9 @@ I am a Frontend Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTG
   <img src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" title="AWS" alt="AWS" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
 </div>
+---
+
+### :fire: My Stats :
+https://github-readme-streak-stats.herokuapp.com/?user=Sonu589
+
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=Sonu589&theme=dark&background=000000)](https://git.io/streak-stats)
