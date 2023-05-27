@@ -28,7 +28,7 @@
 ---
 
 ### :woman_technologist: About Me :
-I am a Frontend Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from India.
+I am a FullStack Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from India.
 - :telescope: I’m Currently Student Of Chitkara University B-tech (CSE).
 
 - :seedling: Exploring Skills and technologies.
