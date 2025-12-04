@@ -69,7 +69,8 @@ https://github-readme-streak-stats.herokuapp.com/?user=Sonu589
 ### Experience:
 <div>
      <ul>
-       <li style="color:Blue">Internship Future Ready Talent</li>
-       <li style="color:Blue">Internship at Cognizant</li>
+       <li style="color:Blue">Internship Microsoft</li>
+       <li style="color:Blue">Internship at makemytrip</li>
+       <li style="color:Blue">SDET at makemytrip</li>
   </ul>
   </div>
