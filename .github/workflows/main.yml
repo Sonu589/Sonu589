@@ -29,14 +29,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug - List repository contents
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Repository contents:"
+          ls -la
+          echo ""
+          echo "Looking for pom.xml files:"
+          find . -name "pom.xml" -type f 2>/dev/null || echo "No pom.xml found"
+
+      - name: Check if pom.xml exists
+        id: check-pom
+        run: |
+          if find . -name "pom.xml" -type f | grep -q .; then
+            echo "pom_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "pom_exists=false" >> $GITHUB_OUTPUT
+            echo "## ⚠️ Warning: No pom.xml found in repository" >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
           java-version: '11'
           distribution: 'temurin'
-          cache: maven
 
       - name: Cache Maven packages
+        if: steps.check-pom.outputs.pom_exists == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
@@ -47,8 +66,22 @@ jobs:
       - name: Compile Java Code
         id: compile
         run: |
+          # Find pom.xml location
+          POM_FILE=$(find . -name "pom.xml" -type f | head -1)
+          
+          if [ -z "$POM_FILE" ]; then
+            echo "## ❌ No pom.xml found in repository" >> $GITHUB_STEP_SUMMARY
+            echo "Make sure you have pushed the pom.xml file to GitHub" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+          
+          POM_DIR=$(dirname "$POM_FILE")
+          echo "Found pom.xml at: $POM_FILE"
+          echo "Changing to directory: $POM_DIR"
+          cd "$POM_DIR"
+          
           echo "::group::Maven Compile"
-          mvn compile -B -q 2>&1 | tee compile-output.txt
+          mvn compile -B 2>&1 | tee compile-output.txt
           COMPILE_EXIT_CODE=${PIPESTATUS[0]}
           echo "::endgroup::"
           
@@ -68,8 +101,13 @@ jobs:
         id: test-compile
         if: success()
         run: |
+          # Find pom.xml location
+          POM_FILE=$(find . -name "pom.xml" -type f | head -1)
+          POM_DIR=$(dirname "$POM_FILE")
+          cd "$POM_DIR"
+          
           echo "::group::Maven Test Compile"
-          mvn test-compile -B -q 2>&1 | tee test-compile-output.txt
+          mvn test-compile -B 2>&1 | tee test-compile-output.txt
           TEST_COMPILE_EXIT_CODE=${PIPESTATUS[0]}
           echo "::endgroup::"
           
@@ -221,14 +259,24 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-          cache: maven
 
       - name: Check Dependencies
         id: deps-check
         run: |
           echo "## Dependency Resolution Check" >> $GITHUB_STEP_SUMMARY
           
-          mvn dependency:resolve -B -q 2>&1 | tee deps-output.txt
+          # Find pom.xml location
+          POM_FILE=$(find . -name "pom.xml" -type f | head -1)
+          
+          if [ -z "$POM_FILE" ]; then
+            echo "### ⚠️ No pom.xml found - skipping dependency check" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          
+          POM_DIR=$(dirname "$POM_FILE")
+          cd "$POM_DIR"
+          
+          mvn dependency:resolve -B 2>&1 | tee deps-output.txt
           DEPS_EXIT_CODE=${PIPESTATUS[0]}
           
           if [ $DEPS_EXIT_CODE -ne 0 ]; then
@@ -355,11 +403,21 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-          cache: maven
 
       - name: Run Checkstyle (if configured)
         run: |
           echo "## Code Style Check" >> $GITHUB_STEP_SUMMARY
+          
+          # Find pom.xml location
+          POM_FILE=$(find . -name "pom.xml" -type f | head -1)
+          
+          if [ -z "$POM_FILE" ]; then
+            echo "ℹ️ No pom.xml found - skipping checkstyle" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          
+          POM_DIR=$(dirname "$POM_FILE")
+          cd "$POM_DIR"
           
           # Check if checkstyle plugin exists in pom.xml
           if grep -q "maven-checkstyle-plugin" pom.xml 2>/dev/null; then
